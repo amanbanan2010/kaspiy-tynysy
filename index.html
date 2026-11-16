@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Каспий тынысы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f3f6f5;
+  --card: #ffffff;
+  --ink: #102128;
+  --muted: #56676c;
+  --line: #d3dcdc;
+  --sea: #0e5f6b;
+  --sea-deep: #0a3540;
+  --oil: #c7841a;
+  --font-display: "Unbounded", "PT Sans", "Arial", sans-serif;
+  --font-body: "PT Serif", "Georgia", "Times New Roman", serif;
+  --font-ui: "PT Sans", "Arial", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 18px; line-height: 1.65; }
+a { color: var(--sea); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--oil); outline-offset: 2px; }
+h1, h2, h3 { text-wrap: balance; }
+.strip { background: var(--ink); color: #cfdcdc; font-family: var(--font-ui); font-size: 14px; letter-spacing: .02em; }
+.strip .wrap { display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: space-between; align-items: center; padding-top: 8px; padding-bottom: 8px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+.fill { color: var(--oil); border-bottom: 1px dashed currentColor; white-space: nowrap; }
+.masthead { position: relative; background: var(--sea-deep); color: #fff; overflow: hidden; }
+.masthead canvas { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 55%; display: block; }
+.masthead .wrap { position: relative; padding-top: 44px; padding-bottom: 120px; display: grid; gap: 14px; }
+.kicker { font-family: var(--font-ui); font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--oil); margin: 0; }
+.masthead h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(38px, 8.4vw, 92px); line-height: 1; letter-spacing: -.01em; margin: 0; }
+.masthead .sub { font-family: var(--font-body); font-style: italic; font-size: clamp(18px, 2.4vw, 22px); color: #cfe3e4; margin: 0; }
+.issue { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 10px 0 0; padding: 0; list-style: none; font-family: var(--font-ui); font-size: 15px; }
+.issue li { border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 4px 12px; background: rgba(10,53,64,.55); }
+.issue li b { color: #fff; }
+nav.bar { position: sticky; top: 0; z-index: 5; background: var(--card); border-bottom: 1px solid var(--line); }
+nav.bar ul { display: flex; gap: 4px; list-style: none; margin: 0 auto; padding: 0 12px; max-width: 1040px; overflow-x: auto; scrollbar-width: none; }
+nav.bar ul::-webkit-scrollbar { display: none; }
+nav.bar a { display: block; padding: 13px 10px 11px; font-family: var(--font-ui); font-size: 15px; font-weight: 700; color: var(--muted); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; }
+nav.bar a:hover { color: var(--ink); }
+nav.bar a.on { color: var(--sea); border-bottom-color: var(--sea); }
+section { padding: 56px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 50px; }
+section:last-of-type { border-bottom: 0; }
+.label { display: inline-block; font-family: var(--font-ui); font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--sea); border-top: 3px solid var(--sea); padding-top: 6px; margin: 0 0 14px; }
+section h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(26px, 3.6vw, 36px); line-height: 1.2; margin: 0 0 22px; }
+.col { max-width: 680px; }
+.staff { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.role { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 18px 18px 16px; display: grid; gap: 6px; align-content: start; }
+.role h3 { font-family: var(--font-ui); font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.role .name { font-family: var(--font-body); font-size: 20px; font-weight: 700; margin: 0; }
+.role p { margin: 0; font-family: var(--font-ui); font-size: 15px; line-height: 1.45; color: var(--muted); }
+.toc { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--line); }
+.toc li { display: grid; grid-template-columns: 44px 1fr auto; gap: 12px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.toc .n { font-family: var(--font-ui); font-weight: 700; font-size: 15px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.toc .t { font-size: 18px; line-height: 1.4; }
+.toc .t small { display: block; font-family: var(--font-ui); font-size: 14px; color: var(--muted); }
+.toc a.t { color: var(--ink); text-decoration: none; }
+.toc a.t:hover { color: var(--sea); text-decoration: underline; }
+.pill { font-family: var(--font-ui); font-size: 13px; font-weight: 700; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.pill.ready { background: #dcefe9; color: #135c45; }
+.pill.soon { background: #ece9e1; color: #6d5f43; }
+.byline { display: flex; flex-wrap: wrap; gap: 4px 16px; font-family: var(--font-ui); font-size: 15px; color: var(--muted); margin: -8px 0 26px; }
+.prose p { margin: 0 0 1.05em; }
+.prose .lead { font-size: 21px; line-height: 1.5; }
+.sign { text-align: right; font-style: italic; color: var(--muted); }
+.figures { margin: 28px 0 30px; background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--oil); border-radius: 6px; padding: 20px 22px 16px; }
+.figures h3 { font-family: var(--font-ui); font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--oil); margin: 0 0 14px; }
+.figures dl { display: grid; gap: 16px 22px; margin: 0; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.figures dt { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.1; color: var(--sea-deep); font-variant-numeric: tabular-nums; }
+.figures dd { margin: 4px 0 0; font-family: var(--font-ui); font-size: 15px; line-height: 1.4; color: var(--muted); }
+.figures .cap { margin: 16px 0 0; padding-top: 10px; border-top: 1px solid var(--line); font-family: var(--font-ui); font-size: 13px; color: var(--muted); }
+.sources { margin: 0; padding-left: 1.6em; font-size: 16px; line-height: 1.5; display: grid; gap: 10px; }
+.sources li::marker { font-family: var(--font-ui); font-weight: 700; color: var(--muted); }
+.sources .src { font-family: var(--font-ui); font-weight: 700; }
+footer { background: var(--ink); color: #b9c8c9; font-family: var(--font-ui); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; padding-top: 22px; padding-bottom: 22px; }
+footer a { color: #e7f1f1; }
+@media (max-width: 520px) {
+  body { font-size: 17px; }
+  section { padding: 40px 0; }
+  .masthead .wrap { padding-top: 32px; padding-bottom: 96px; }
+  .toc li { grid-template-columns: 34px 1fr; }
+  .toc .pill { grid-column: 2; justify-self: start; }
+}
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <div class="wrap">
+    <span>Қазақ тілі пәні бойынша жұптық жоба</span>
+    <span><span class="fill">Қала</span>, <span class="fill">Мектеп</span></span>
+  </div>
+</div>
+
+<header class="masthead" id="basty">
+  <canvas id="waves" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="kicker">Экологиялық цифрлық журнал</p>
+    <h1>Каспий тынысы</h1>
+    <p class="sub">Теңіз, мұнай және оның болашағы туралы</p>
+    <ul class="issue">
+      <li><b>№1</b> шығарылым</li>
+      <li>2026 жыл, қараша</li>
+      <li>Санның тақырыбы: <b>«Мұнай және Каспий»</b></li>
+    </ul>
+  </div>
+</header>
+
+<nav class="bar" aria-label="Журнал бөлімдері">
+  <ul>
+    <li><a href="#redaktsiya">Редакция</a></li>
+    <li><a href="#mazmuny">Мазмұны</a></li>
+    <li><a href="#redaktor-sozi">Редактор сөзі</a></li>
+    <li><a href="#maqala">Ақпараттық мақала</a></li>
+    <li><a href="#derekkozder">Дереккөздер</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section id="redaktsiya">
+    <div class="wrap">
+      <p class="label">Редакция</p>
+      <h2>Журналды кім жасады</h2>
+      <div class="staff">
+        <div class="role">
+          <h3>Бас редактор</h3>
+          <p class="name"><span class="fill">Аты-жөні</span></p>
+          <p>Нөмірді жоспарлайды, мәтіндерді түзетеді, редактор сөзін жазады.</p>
+        </div>
+        <div class="role">
+          <h3>Тілші</h3>
+          <p class="name"><span class="fill">Аты-жөні</span></p>
+          <p>Дерек жинайды, сұхбат алады, жаңалықтар дайындайды.</p>
+        </div>
+        <div class="role">
+          <h3>Фототілші / дизайнер</h3>
+          <p class="name"><span class="fill">Аты-жөні</span></p>
+          <p>Суреттер, инфографика, QR-код және сайттың безендірілуі.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mazmuny">
+    <div class="wrap">
+      <p class="label">Мазмұны</p>
+      <h2>Осы санда</h2>
+      <ol class="toc">
+        <li><span class="n">01</span><a class="t" href="#redaktor-sozi">Редактор сөзі<small>Неге бұл тақырыпты таңдадық</small></a><span class="pill ready">Дайын</span></li>
+        <li><span class="n">02</span><a class="t" href="#maqala">Ақпараттық мақала<small>«Каспий және оның мұнайы: негізгі деректер»</small></a><span class="pill ready">Дайын</span></li>
+        <li><span class="n">03</span><span class="t">Зерттеу мақаласы</span><span class="pill soon">Жақында</span></li>
+        <li><span class="n">04</span><span class="t">Проблемалық мақала</span><span class="pill soon">Жақында</span></li>
+        <li><span class="n">05</span><span class="t">Эссе</span><span class="pill soon">Жақында</span></li>
+        <li><span class="n">06</span><span class="t">Сұхбат</span><span class="pill soon">Жақында</span></li>
+        <li><span class="n">07</span><span class="t">Қысқа әңгіме</span><span class="pill soon">Жақында</span></li>
+        <li><span class="n">08</span><span class="t">Жаңалықтар</span><span class="pill soon">Жақында</span></li>
+        <li><span class="n">09</span><span class="t">Бұл қызық!<small>Қызықты деректер</small></span><span class="pill soon">Жақында</span></li>
+        <li><span class="n">10</span><span class="t">Президент Жолдауынан үзінді</span><span class="pill soon">Жақында</span></li>
+        <li><span class="n">11</span><span class="t">Әлеуметтік жарнама</span><span class="pill soon">Жақында</span></li>
+        <li><span class="n">12</span><a class="t" href="#derekkozder">Пайдаланылған дереккөздер</a><span class="pill ready">Дайын</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="redaktor-sozi">
+    <div class="wrap">
+      <div class="col">
+        <p class="label">Редактор сөзі</p>
+        <h2>Құрметті оқырман!</h2>
+        <div class="prose">
+          <p class="lead">Сіздің алдыңызда «Каспий тынысы» цифрлық журналының алғашқы саны. Біз «Мұнай және Каспий» тақырыбын бекер таңдаған жоқпыз.</p>
+          <p>Каспий – еліміздің батысындағы ең үлкен су айдыны. Оның жағалауы мен түбінде Қазақстанның ең бай мұнай кен орындары орналасқан. Мұнай елімізге табыс әкеледі, бірақ теңіздің өзі қандай күйде? Соңғы жылдары Каспийдің тартылып жатқаны, жағаға өлген итбалықтар шығып жатқаны туралы жаңалықтарды жиі естиміз.</p>
+          <p>Біз осы сұрақтарға жауап іздеп көрдік. Журналда мұнай өндірісі мен теңіздің тағдыры туралы мақалалар, сұхбат, жаңалықтар және қызықты деректер бар. Біз мәселенің тек қорқынышты жағын ғана емес, оның себептерін, экономикаға әсерін және шешу жолдарын да көрсеткіміз келді.</p>
+          <p>Каспийдің болашағы – бәрімізге ортақ. Оқыңыз, ойланыңыз және пікіріңізбен бөлісіңіз!</p>
+          <p class="sign">Бас редактор <span class="fill">Аты-жөні</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="maqala">
+    <div class="wrap">
+      <div class="col">
+        <p class="label">Ақпараттық мақала</p>
+        <h2>Каспий және оның мұнайы: негізгі деректер</h2>
+        <div class="byline">
+          <span>Авторы: <span class="fill">Аты-жөні</span></span>
+          <span>Оқу уақыты: 2 минут</span>
+        </div>
+        <div class="prose">
+          <p>Каспий – әлемдегі ең үлкен тұйық су айдыны. Ол Еуропа мен Азияның шекарасында орналасқан. Каспийдің жағасында бес мемлекет бар: Қазақстан, Ресей, Әзербайжан, Иран және Түрікменстан. Теңіздің солтүстік және шығыс жағалауы Қазақстанға тиесілі. Бұл жерде Атырау және Маңғыстау облыстары орналасқан.</p>
+          <p>Каспий мұнай мен газға бай. Қазақстанның ең ірі кен орындарының бірі – Қашаған. Ол 2000 жылы теңіздің солтүстік бөлігінен ашылды. Кен орнына XIX ғасырда өмір сүрген ақын Қашаған Күржіманұлының есімі берілген. Мамандардың бағалауынша, мұнда 9–13 миллиард баррель алынатын мұнай қоры бар. Бұл – соңғы 40 жылда әлемде ашылған ең ірі кен орындарының бірі. Коммерциялық өндіріс 2016 жылдың күзінде басталды. Кен орнының операторы – NCOC консорциумы. 2023 жылы Қашағанда рекордтық 18,8 миллион тонна мұнай өндірілді.</p>
+        </div>
+
+        <aside class="figures" aria-label="Сандармен">
+          <h3>Сандармен</h3>
+          <dl>
+            <div><dt>2000</dt><dd>Қашаған кен орны ашылған жыл</dd></div>
+            <div><dt>18,8 млн т</dt><dd>2023 жылы Қашағанда өндірілген мұнай (рекорд)</dd></div>
+            <div><dt>−29,3 м</dt><dd>2025 жылдың І жартысында ҚР бөлігіндегі теңіздің орташа деңгейі</dd></div>
+            <div><dt>1,2 млн → 104 мың</dt><dd>Каспий итбалығының саны: XX ғасыр басы және 2005 жыл</dd></div>
+          </dl>
+          <p class="cap">Дереккөздер: Kursiv Media, The Astana Times, Inbusiness.kz. Теңіз деңгейі Балтық теңізінің деңгейімен салыстырып өлшенеді.</p>
+        </aside>
+
+        <div class="prose">
+          <p>Сонымен бірге Каспий теңізінің деңгейі төмендеп барады. Астрахандағы Волга-Каспий балық шаруашылығы ғылыми-зерттеу институтының мәліметінше, 2025 жылы теңіз деңгейі Балтық теңізінің деңгейінен 29 метрден де төмен түскен. Әдетте бұл көрсеткіш минус 26–27 метр шамасында болған. The Astana Times басылымының жазуынша, 2025 жылдың бірінші жартысында Қазақстан бөлігіндегі орташа деңгей минус 29,3 метр болды. Әзербайжан мамандарының есебі бойынша, соңғы 10 жылда теңіз 1,5 метрге таязданған. Ең көп өзгеріс теңіздің таяз солтүстік бөлігінде, яғни Қазақстан мен Ресей жағалауында байқалады.</p>
+          <p>Каспийде тек осы теңізде ғана тіршілік ететін жануар бар – ол Каспий итбалығы. Ғалымдардың деректері бойынша, XX ғасырдың басында олардың саны 1,2 миллионға жуық болған, ал 2005 жылы 104 мыңға дейін азайған. 2020 жылы Каспий итбалығы Қазақстанның Қызыл кітабына енгізілді.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="derekkozder">
+    <div class="wrap">
+      <div class="col">
+        <p class="label">Дереккөздер</p>
+        <h2>Пайдаланылған дереккөздер</h2>
+        <ol class="sources">
+          <li><span class="src">Kursiv Media.</span> <a href="https://kz.kursiv.media/kk/2024-02-01/qrln-munai/" rel="noopener">«Қашағандағы мұнай өндірісі рекордтық 18,8 млн тоннаға жетті»</a>, 2024.</li>
+          <li><span class="src">Hart Energy.</span> <a href="https://www.hartenergy.com/news/kashagan-oil-field-starts-commercial-output-111813" rel="noopener">«Kashagan oil field starts commercial output»</a>, 2016.</li>
+          <li><span class="src">The Moscow Times.</span> <a href="https://www.themoscowtimes.com/2025/07/24/caspian-sea-water-levels-drop-to-historic-low-scientists-say-a89947" rel="noopener">«Caspian Sea water levels drop to historic low, scientists say»</a>, 24.07.2025.</li>
+          <li><span class="src">The Astana Times.</span> <a href="https://astanatimes.com/2026/01/caspian-seas-decline-hits-economy-infrastructure-and-health/" rel="noopener">«Caspian Sea’s decline hits economy, infrastructure and health»</a>, 2026.</li>
+          <li><span class="src">Insurance Journal (Reuters).</span> <a href="https://www.insurancejournal.com/news/international/2025/08/26/836954.htm" rel="noopener">«Azerbaijan sounds alarm over shallowing of Caspian Sea»</a>, 26.08.2025.</li>
+          <li><span class="src">Inbusiness.kz.</span> <a href="https://inbusiness.kz/kz/last/kaspij-tenizindegi-itbalykka-koz-tikkender-kobejgen" rel="noopener">«Каспий теңізіндегі итбалыққа көз тіккендер көбейген»</a>.</li>
+          <li><span class="src">24.kz.</span> <a href="https://24.kz/kz/zha-aly-tar/kogam/664245-kaspijden-156-itbaly-ylymi-zertteuge-alynady" rel="noopener">«Каспийден 156 итбалық ғылыми зерттеуге алынады»</a>.</li>
+          <li><span class="src">Азаттық.</span> <a href="https://docs.rferl.org/kk-kz/2026/07/11/pdf/33801481/1c5cc5292a7b4fd3b3bd968b8fd210f9.pdf" rel="noopener">«Мамандар Каспий жағалауындағы итбалықтардың қырылу себебін түсіндірді»</a>, 11.07.2026.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 «Каспий тынысы» · №1 шығарылым</span>
+    <a href="#basty">Жоғарыға ↑</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var c = document.getElementById('waves');
+  if (!c || !c.getContext) return;
+  var ctx = c.getContext('2d');
+  var layers = [
+    { amp: 10, len: 340, y: 0.30, color: 'rgba(30,120,132,0.35)', ph: 0.0 },
+    { amp: 12, len: 260, y: 0.48, color: 'rgba(22,100,112,0.55)', ph: 1.7 },
+    { amp: 9,  len: 200, y: 0.66, color: 'rgba(14,80,92,0.80)',  ph: 3.1 },
+    { amp: 7,  len: 150, y: 0.82, color: 'rgba(16,33,40,0.90)',  ph: 4.4 }
+  ];
+  function draw() {
+    var dpr = window.devicePixelRatio || 1;
+    var w = c.clientWidth, h = c.clientHeight;
+    if (!w || !h) return;
+    c.width = Math.round(w * dpr); c.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    layers.forEach(function (L) {
+      ctx.beginPath();
+      ctx.moveTo(0, h);
+      for (var x = 0; x <= w; x += 4) {
+        var y = h * L.y + Math.sin(x / L.len * Math.PI * 2 + L.ph) * L.amp + Math.sin(x / (L.len * 0.37) + L.ph * 2) * (L.amp * 0.3);
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(w, h);
+      ctx.closePath();
+      ctx.fillStyle = L.color;
+      ctx.fill();
+    });
+  }
+  draw();
+  var t;
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(draw, 120); });
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.bar a'));
+  if (!('IntersectionObserver' in window)) return;
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && byId[e.target.id]) {
+        links.forEach(function (a) { a.classList.remove('on'); });
+        byId[e.target.id].classList.add('on');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  Object.keys(byId).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+})();
+</script>
+</body>
+</html>
