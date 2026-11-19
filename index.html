@@ -91,6 +91,27 @@ footer a { color: #e7f1f1; }
   .toc li { grid-template-columns: 34px 1fr; }
   .toc .pill { grid-column: 2; justify-self: start; }
 }
+
+.newslist { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
+.newslist li { display: grid; grid-template-columns: 130px 1fr; gap: 14px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.newslist time { font-family: var(--font-ui); font-weight: 700; font-size: 14px; color: var(--sea); }
+.newslist p { margin: 0; }
+.srcline { display: block; margin-top: 6px; font-family: var(--font-ui); font-size: 13px; color: var(--muted); }
+.facts { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.facts li { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--sea); border-radius: 6px; padding: 16px 18px; font-size: 17px; line-height: 1.5; }
+blockquote.address { margin: 0 0 24px; padding: 24px 26px; background: var(--sea-deep); color: #fff; border-radius: 6px; font-size: 21px; line-height: 1.5; }
+blockquote.address p { margin: 0 0 .6em; }
+blockquote.address .who { font-family: var(--font-ui); font-size: 14px; color: #cfe3e4; margin: 14px 0 0; }
+.poster { background: var(--sea-deep); color: #fff; border: 6px solid var(--oil); border-radius: 8px; padding: 34px 28px; display: grid; gap: 18px; max-width: 680px; }
+.poster .slogan { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 5vw, 44px); line-height: 1.12; margin: 0; }
+.poster .slogan span { color: var(--oil); }
+.poster .tag { font-family: var(--font-body); font-style: italic; font-size: 20px; color: #cfe3e4; margin: 0; }
+.poster ol { margin: 0; padding-left: 1.3em; display: grid; gap: 10px; font-family: var(--font-ui); font-size: 18px; line-height: 1.4; }
+.poster ol b { color: #f1c27a; }
+.poster .small { font-family: var(--font-ui); font-size: 13px; color: #cfe3e4; margin: 0; }
+.story p { text-indent: 1.5em; }
+.story p.d { text-indent: 0; }
+@media (max-width: 520px) { .newslist li { grid-template-columns: 1fr; gap: 4px; } }
 </style>
 </head>
 <body>
@@ -121,7 +142,15 @@ footer a { color: #e7f1f1; }
     <li><a href="#redaktsiya">Редакция</a></li>
     <li><a href="#mazmuny">Мазмұны</a></li>
     <li><a href="#redaktor-sozi">Редактор сөзі</a></li>
-    <li><a href="#maqala">Ақпараттық мақала</a></li>
+    <li><a href="#maqala">Ақпарат</a></li>
+    <li><a href="#zertteu">Зерттеу</a></li>
+    <li><a href="#problema">Мәселе</a></li>
+    <li><a href="#esse">Эссе</a></li>
+    <li><a href="#angime">Әңгіме</a></li>
+    <li><a href="#zhanalyqtar">Жаңалықтар</a></li>
+    <li><a href="#qyzyq">Бұл қызық!</a></li>
+    <li><a href="#zholdau">Жолдау</a></li>
+    <li><a href="#zharnama">Жарнама</a></li>
     <li><a href="#derekkozder">Дереккөздер</a></li>
   </ul>
 </nav>
@@ -159,15 +188,15 @@ footer a { color: #e7f1f1; }
       <ol class="toc">
         <li><span class="n">01</span><a class="t" href="#redaktor-sozi">Редактор сөзі<small>Неге бұл тақырыпты таңдадық</small></a><span class="pill ready">Дайын</span></li>
         <li><span class="n">02</span><a class="t" href="#maqala">Ақпараттық мақала<small>«Каспий және оның мұнайы: негізгі деректер»</small></a><span class="pill ready">Дайын</span></li>
-        <li><span class="n">03</span><span class="t">Зерттеу мақаласы</span><span class="pill soon">Жақында</span></li>
-        <li><span class="n">04</span><span class="t">Проблемалық мақала</span><span class="pill soon">Жақында</span></li>
-        <li><span class="n">05</span><span class="t">Эссе</span><span class="pill soon">Жақында</span></li>
+        <li><span class="n">03</span><a class="t" href="#zertteu">Зерттеу мақаласы<small>«Каспий неге тартылып жатыр?»</small></a><span class="pill ready">Дайын</span></li>
+        <li><span class="n">04</span><a class="t" href="#problema">Проблемалық мақала<small>«Итбалықтар неге қырылып жатыр?»</small></a><span class="pill ready">Дайын</span></li>
+        <li><span class="n">05</span><a class="t" href="#esse">Эссе<small>«Алыстағы теңіз – жақындағы мәселе»</small></a><span class="pill ready">Дайын</span></li>
         <li><span class="n">06</span><span class="t">Сұхбат</span><span class="pill soon">Жақында</span></li>
-        <li><span class="n">07</span><span class="t">Қысқа әңгіме</span><span class="pill soon">Жақында</span></li>
-        <li><span class="n">08</span><span class="t">Жаңалықтар</span><span class="pill soon">Жақында</span></li>
-        <li><span class="n">09</span><span class="t">Бұл қызық!<small>Қызықты деректер</small></span><span class="pill soon">Жақында</span></li>
-        <li><span class="n">10</span><span class="t">Президент Жолдауынан үзінді</span><span class="pill soon">Жақында</span></li>
-        <li><span class="n">11</span><span class="t">Әлеуметтік жарнама</span><span class="pill soon">Жақында</span></li>
+        <li><span class="n">07</span><a class="t" href="#angime">Қысқа әңгіме<small>«Жағадағы күшік»</small></a><span class="pill ready">Дайын</span></li>
+        <li><span class="n">08</span><a class="t" href="#zhanalyqtar">Жаңалықтар<small>2026 жылғы бес жаңалық</small></a><span class="pill ready">Дайын</span></li>
+        <li><span class="n">09</span><a class="t" href="#qyzyq">Бұл қызық!<small>Каспий туралы қызықты деректер</small></a><span class="pill ready">Дайын</span></li>
+        <li><span class="n">10</span><a class="t" href="#zholdau">Президент Жолдауынан үзінді<small>Су ресурстары туралы</small></a><span class="pill ready">Дайын</span></li>
+        <li><span class="n">11</span><a class="t" href="#zharnama">Әлеуметтік жарнама<small>«Каспий тартылса – болашақ тарылады»</small></a><span class="pill ready">Дайын</span></li>
         <li><span class="n">12</span><a class="t" href="#derekkozder">Пайдаланылған дереккөздер</a><span class="pill ready">Дайын</span></li>
       </ol>
     </div>
@@ -222,6 +251,151 @@ footer a { color: #e7f1f1; }
     </div>
   </section>
 
+  <section id="zertteu">
+    <div class="wrap">
+      <div class="col">
+        <p class="label">Зерттеу мақаласы</p>
+        <h2>Каспий неге тартылып жатыр?</h2>
+        <div class="byline"><span>Авторы: Айқынбай Иманжүсіп</span><span>Оқу уақыты: 2 минут</span></div>
+        <div class="prose">
+          <p>Каспий теңізінің деңгейі бұрын да өзгеріп тұрған. 24KZ арнасының мәліметінше, теңіз 1977 жылы ең төменгі деңгейіне түсіп, 1995 жылы қайта көтерілген, ал 2005 жылдан бастап тағы тартыла бастады. Бірақ қазіргі төмендеу бұрынғыдан жылдам. Біз оның себептерін бірнеше дереккөз арқылы зерттеп көрдік.</p>
+          <p>Бірінші себеп – өзен суының азаюы. 2026 жылдың маусымында Earth’s Future ғылыми журналында жарияланған халықаралық зерттеуге сәйкес, Каспийге құятын өзендердің жалпы ағыны едәуір азайған. Оның басты себебі – Еділ (Волга) өзені суының кемуі. Ал Еділ Каспийге келетін судың шамамен 80 пайызын береді. Ғалымдардың айтуынша, Еділ бассейніндегі жауын-шашын азаймаған. Демек, суды адамдар көп пайдаланып отыр: су қоймалары, егін суару, өнеркәсіп.</p>
+          <p>Екінші себеп – климаттың жылынуы. Экология министрлігінің өкілі Дәулет Есмағамбетовтің айтуынша, Каспий аймағы әлемдегі орташа көрсеткіштен әлдеқайда жылдам жылынып жатыр, сондықтан су көп буланады. Оның дерегі бойынша, 2024 жылы Қазақстан бөлігінде теңіз деңгейі бір жылда 26 сантиметрге төмендеген. Әзірбайжан ғалымдары да 2005 жылдан кейін аймақтың жылынуы салдарынан Еділ ағынының азайғанын анықтаған.</p>
+          <p>Қорытындылай келе, Каспийдің тартылуына бір ғана себеп емес, бірнеше фактор әсер етеді: өзен суының азаюы, булану және адамның шаруашылық әрекеті. Сондықтан бұл мәселені Каспий маңындағы бес мемлекет бірлесіп шешуі керек.</p>
+          <p class="srcline">Дереккөздер: 24KZ; Earth’s Future (2026), EarthSky; theweather.net; Kursiv Media; EGU26 (Safarov E., Safarov S.).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="problema">
+    <div class="wrap">
+      <div class="col">
+        <p class="label">Проблемалық мақала</p>
+        <h2>Итбалықтар неге қырылып жатыр?</h2>
+        <div class="byline"><span>Авторы: Есенгелді Аман</span><span>Оқу уақыты: 2 минут</span></div>
+        <div class="prose">
+          <p>Каспий итбалығы – Каспий теңізіндегі жалғыз теңіз сүтқоректісі және Қазақстанның Қызыл кітабына енген түр. Алайда жыл сайын жағаға өлген итбалықтар шығып жатады. Kaspika ұйымының дерегінше, 2025 жылдың қазан–желтоқсан айларында Қазақстанда 183, Ресейде 566, Иранда 36 өлі итбалық тіркелген. 2026 жылдың сәуірінде Түпқараған түбегінен тағы 191 өлексе табылды, ал 1 маусымда Баутино ауылы маңынан 20-ға жуық өлексе табылды.</p>
+          <p>Мәселенің себебі әлі нақты анықталмаған. Кейбір мамандар теңіздің ластануын айтады, ал ресейлік ғалымдар құс тұмауын негізгі нұсқа деп санайды. Теңіздің таяздануы да итбалықтардың мекенін азайтады. Мұнай компанияларының әсері туралы да пікір көп. Экологтар тұрақты әрі тәуелсіз мониторинг жеткіліксіз екенін айтады.</p>
+          <p>Екінші жағынан, мұнай саласы – Қазақстан экономикасының негізі. Сонымен қатар NCOC компаниясы Қазақстан мен Ресей ғалымдарымен бірге итбалықты зерттеу бағдарламасын бастаған. 2026 жылы Үкімет 66 итбалықты ғылыми мақсатта ұстап, таңбалап, қайта босатуға рұқсат берді.</p>
+          <p>Біздің ойымызша, мәселені шешу үшін, біріншіден, итбалықтардың өлу себебін тәуелсіз зертханалар зерттеп, нәтижесін халыққа ашық жариялауы керек. Екіншіден, мұнай компаниялары экологиялық мониторинг деректерін ашық көрсетуі қажет. Үшіншіден, итбалықтар жиналатын аралдарды қорғауды күшейту керек. Итбалықты сақтасақ, Каспийді де сақтаймыз.</p>
+          <p class="srcline">Дереккөздер: Kaspika; The Caspian Post; Inbusiness.kz; 24KZ; Orda.kz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="esse">
+    <div class="wrap">
+      <div class="col">
+        <p class="label">Эссе</p>
+        <h2>Алыстағы теңіз – жақындағы мәселе</h2>
+        <div class="byline"><span>Авторы: Есенгелді Аман</span></div>
+        <div class="prose">
+          <p>Біз Астанада тұрамыз. Каспий бізден мыңдаған шақырым жерде. Сондықтан бұрын теңіздің тартылуы мені онша алаңдатпайтын. «Ол алыста ғой, маған қандай қатысы бар?» деп ойлайтынмын. Бірақ осы жобаны жасау барысында менің көзқарасым өзгерді.</p>
+          <p>Мен Арал теңізінің тағдырын еске түсірдім. Бір кездері кемелер жүзген теңіздің орнында қазір құмды шөл жатыр. Аралды да бір кезде «алыстағы мәселе» деп ойлаған шығармыз. Енді ғалымдар Каспийдің де сол жолмен кетуі мүмкін екенін ескертеді. Бұл мені қатты ойландырды.</p>
+          <p>Каспий – тек су емес. Ол – балықшылардың нәсібі, итбалықтардың мекені, Ақтау мен Атыраудың тынысы. Көліктегі жанармай мен күнделікті қолданатын пластик бұйымдар да мұнайдан жасалады. Демек, Каспийдің тағдыры әрқайсымызға қатысты.</p>
+          <p>Әрине, мен бір өзім теңізді құтқара алмаймын. Бірақ суды үнемдеуге, табиғатқа қамқор болуға, бұл мәселе туралы басқаларға айтуға қолымнан келеді. Үлкен өзгеріс кішкентай әрекеттен басталады деп ойлаймын.</p>
+          <p>Менің ойымша, табиғат бізге ата-бабадан мұра ретінде ғана емес, келешек ұрпақтан қарызға да берілген. Сол қарызды қайтара алатындай болуымыз керек. Каспийдің тынысы тоқтамасын!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="angime">
+    <div class="wrap">
+      <div class="col">
+        <p class="label">Қысқа әңгіме</p>
+        <h2>Жағадағы күшік</h2>
+        <div class="byline"><span>Авторы: Айқынбай Иманжүсіп</span></div>
+        <div class="prose story">
+          <p>Жазғы демалыста Ерасыл атасының үйіне, Баутино ауылына барды. Таңертең атасы оны теңіз жағасына ертіп шықты.</p>
+          <p class="d">– Көрдің бе, балам, мына тас айлақты? – деді атасы. – Мен сенің жасыңда болғанда толқын дәл осы жерге соғатын. Біз осы жерден секіріп шомылатынбыз.</p>
+          <p>Ерасыл айлаққа қарады. Су одан әлдеқайда алыста жылтырап жатыр екен. Арасында тек құм мен кепкен балдыр.</p>
+          <p>Олар су жағасына дейін ұзақ жүрді. Кенет Ерасыл қара тастың жанында бір нәрсе қозғалғанын байқады. Жақындап қараса – кішкентай итбалық! Үлкен қара көздері мұңайып қарайды, өзі әлсіз.</p>
+          <p class="d">– Ата, оны үйге алып кетейік! Мен оны асыраймын!</p>
+          <p>Атасы басын шайқады:</p>
+          <p class="d">– Жоқ, балам. Ол – жабайы аң, Қызыл кітапқа енген. Қолға ұстасақ, оған зиян келтіруіміз мүмкін. Дұрысы – мамандарға хабарлау.</p>
+          <p>Атасы телефонын алып, итбалықтарды қорғайтын резерват қызметкерлеріне қоңырау шалды. Бір сағаттан кейін екі маман келіп, итбалықты абайлап қарап шықты.</p>
+          <p class="d">– Уақытында хабарлағандарыңыз жақсы болды, – деді біреуі. – Ол шаршап, адасып қалған. Біз оны емдеп, теңізге қайта жібереміз.</p>
+          <p>Кешке Ерасыл ұзақ ұйықтай алмады. Ол атасының сөзін, алыстап кеткен толқынды, итбалықтың мұңды көзін ойлады.</p>
+          <p class="d">– Ата, – деді ол, – мен өскенде теңіз зерттеушісі боламын. Теңізді қайтадан айлаққа жеткіземін.</p>
+          <p>Атасы күлімсіреп, немересінің басынан сипады:</p>
+          <p class="d">– Айтқаның келсін, балам.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="zhanalyqtar">
+    <div class="wrap">
+      <div class="col">
+        <p class="label">Жаңалықтар</p>
+        <h2>Каспий: 2026 жылғы жаңалықтар</h2>
+        <div class="byline"><span>Дайындаған: Айқынбай Иманжүсіп</span></div>
+        <ul class="newslist">
+          <li><time>24 ақпан 2026</time><p>Үкімет Каспий теңізін кешенді зерттеуге және сақтауға резервтен 1,1 млрд теңге бөлді. 2026 жылы теңізде 50 көрсеткіш бойынша зерттеу жүргізілуде.<span class="srcline">Interfax-Kazakhstan, Lada.kz</span></p></li>
+          <li><time>8 сәуір 2026</time><p>Дүниежүзілік банк Каспийдің биоалуантүрлілігін сақтау жобасын мақұлдады. Жаһандық экологиялық қор жобаға 11,74 млн доллар грант бөледі.<span class="srcline">Kazakhstan Today</span></p></li>
+          <li><time>27 сәуір 2026</time><p>Үкімет 66 Каспий итбалығын ғылыми зерттеу және таңбалау үшін аулап, кейін табиғатқа қайта жіберуге рұқсат берді. Жұмыс Маңғыстау және Атырау облыстарындағы аралдарда 31 желтоқсанға дейін жүреді.<span class="srcline">24KZ, Orda.kz</span></p></li>
+          <li><time>Шілде 2026</time><p>Құлалы аралындағы бақылау бекетінде теңіздің орташа деңгейі минус 29,42 метрге жетті. Бұл – бақылау кезеңіндегі ең төменгі көрсеткіш.<span class="srcline">Khaleej Times</span></p></li>
+          <li><time>Қазан 2026</time><p>Қазақстан Әзербайжанның Каспийдің таяздануы бойынша жеке үкіметаралық комиссия құру бастамасын қолдады. Комиссияның алғашқы отырысы 2027 жылдың бірінші жартысында Әзербайжанда өтеді деп жоспарланған.<span class="srcline">Lada.kz</span></p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="qyzyq">
+    <div class="wrap">
+      <p class="label">Бұл қызық!</p>
+      <h2>Каспий туралы қызықты деректер</h2>
+      <div class="byline"><span>Дайындаған: Есенгелді Аман</span></div>
+      <ul class="facts">
+        <li>Каспийдің ауданы шамамен 371 мың шаршы шақырым. Бұл – Жапонияның аумағымен шамалас.<span class="srcline">EarthSky</span></li>
+        <li>Каспийге құятын судың шамамен 80 пайызын Еділ (Волга) өзені береді.<span class="srcline">theweather.net</span></li>
+        <li>Қашаған кен орны XIX ғасырдағы ақын Қашаған Күржіманұлының есімімен аталған. «Қашаған» сөзі «тұрақсыз, бағынбайтын» дегенді білдіреді. Кен орнындағы қиындықтарға қарап, атауы өзін ақтады дейді.<span class="srcline">Hart Energy</span></li>
+        <li>Каспий итбалығы – Каспий теңізінде тіршілік ететін жалғыз теңіз сүтқоректісі.<span class="srcline">Orda.kz</span></li>
+        <li>Соңғы 20 жылда Каспийдің ауданы 35 мың шаршы шақырымға кеміді. Бұл аумаққа Израиль мен Катар қатар сыйып кетеді.<span class="srcline">24KZ</span></li>
+        <li>Су тартылған соң 2026 жылы Каспийдің солтүстігінде жаңа арал пайда болды.<span class="srcline">Orda.kz, Khaleej Times</span></li>
+        <li>Әзірбайжан ғалымдарының ескертуінше, тартылу жалғаса берсе, Каспий болашақта екі бөлек көлге бөлінуі мүмкін.<span class="srcline">Tengrinews</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="zholdau">
+    <div class="wrap">
+      <div class="col">
+        <p class="label">Президент Жолдауынан үзінді</p>
+        <h2>Су – ел байлығы</h2>
+        <blockquote class="address">
+          <p>«Елімізде су ресурстарының тапшылығын жою үшін жүйелі әрі батыл шаралар қабылдау қажеттігін ерекше атап өткім келеді.</p>
+          <p>…Су ресурстарын түгелдей әрі дұрыс есепке алу үшін цифрлық құралдарды толыққанды пайдалану айрықша маңызды».</p>
+          <p class="who">Мемлекет басшысы Қ.-Ж. Тоқаевтың «Жаңа тарихи кезеңдегі Қазақстанның өзекті міндеттері» атты Қазақстан халқына Жолдауы, 2026 жылғы 28 қазан. Дереккөз: akorda.kz, 24KZ.</p>
+        </blockquote>
+        <div class="prose">
+          <p><b>Біздің пікіріміз.</b> Бұл сөздер Каспий мәселесіне тікелей қатысты. Каспийге құятын өзендердің суы азайып жатқанда, суды үнемдеу мен оны дұрыс есепке алу – теңізді сақтаудың бір жолы. Мемлекет басшысы Каспийдің тартылуы туралы халықаралық алаңдарда да жиі айтып жүр, демек бұл – еліміз үшін маңызды мәселе.</p>
+          <p class="sign">Есенгелді Аман</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="zharnama">
+    <div class="wrap">
+      <p class="label">Әлеуметтік жарнама</p>
+      <h2>Каспийге көмектес</h2>
+      <div class="poster">
+        <p class="slogan">Каспий тартылса – <span>болашақ тарылады</span></p>
+        <p class="tag">Теңізді сақтау әрқайсымыздың қолымызда.</p>
+        <ol>
+          <li><b>Суды үнемде.</b> Тісіңді жуғанда шүмекті жауып қой.</li>
+          <li><b>Жағаны таза ұста.</b> Қоқысыңды өзіңмен ала кет.</li>
+          <li><b>Итбалыққа тиме.</b> Әлсіз немесе өлі итбалық көрсең, қолыңа алма, мамандарға хабарла.</li>
+        </ol>
+        <p class="small">«Каспий тынысы» журналы · Дизайн: Есенгелді Аман</p>
+      </div>
+    </div>
+  </section>
+
   <section id="derekkozder">
     <div class="wrap">
       <div class="col">
@@ -236,6 +410,28 @@ footer a { color: #e7f1f1; }
           <li><span class="src">Inbusiness.kz.</span> <a href="https://inbusiness.kz/kz/last/kaspij-tenizindegi-itbalykka-koz-tikkender-kobejgen" rel="noopener">«Каспий теңізіндегі итбалыққа көз тіккендер көбейген»</a>.</li>
           <li><span class="src">24.kz.</span> <a href="https://24.kz/kz/zha-aly-tar/kogam/664245-kaspijden-156-itbaly-ylymi-zertteuge-alynady" rel="noopener">«Каспийден 156 итбалық ғылыми зерттеуге алынады»</a>.</li>
           <li><span class="src">Азаттық.</span> <a href="https://docs.rferl.org/kk-kz/2026/07/11/pdf/33801481/1c5cc5292a7b4fd3b3bd968b8fd210f9.pdf" rel="noopener">«Мамандар Каспий жағалауындағы итбалықтардың қырылу себебін түсіндірді»</a>, 11.07.2026.</li>
+                  <li><span class="src">24KZ.</span> <a href="https://24.kz/kz/zha-aly-tar/ekologiya/764372-kaspij-kemerine-tola-ma" rel="noopener">«Каспий кемеріне тола ма?»</a>, 2026.</li>
+          <li><span class="src">Earth’s Future.</span> <a href="https://doi.org/10.1029/2025EF008028" rel="noopener">«The Shrinking Caspian Sea: Eco-Hydrological Responses to Human and Climate Pressures»</a>, 05.06.2026.</li>
+          <li><span class="src">EarthSky.</span> <a href="https://earthsky.org/earth/caspian-sea-earths-largest-inland-shrinking/" rel="noopener">«The Caspian Sea – Earth’s largest inland sea – is shrinking»</a>, 2026.</li>
+          <li><span class="src">theweather.net.</span> <a href="https://www.theweather.net/news/trending/the-caspian-sea-is-drying-up-the-world-s-largest-lake-has-lost-24-000-square-kilometers-due-to-river-diversions.html" rel="noopener">«The Caspian Sea is drying up»</a>, 2026.</li>
+          <li><span class="src">Kursiv Media.</span> <a href="https://kz.kursiv.media/kk/2025-08-11/grtb-kaspii-aqtau/" rel="noopener">«Каспий деңгейі 26 см төмендеді: 2050 жылға болжам қандай?»</a>, 11.08.2025.</li>
+          <li><span class="src">Safarov E., Safarov S. EGU26.</span> <a href="https://meetingorganizer.copernicus.org/EGU26/EGU26-840.html" rel="noopener">«Drivers of Caspian Sea Level Decline: Volga Runoff, Wind Regime, and Climate Variability»</a>, 2026.</li>
+          <li><span class="src">Kaspika.</span> <a href="https://kaspika.org/en/2026/01/05/on-death-of-caspian-seals-at-end-of-2025/" rel="noopener">«On the death of Caspian seals at the end of 2025»</a>, 05.01.2026.</li>
+          <li><span class="src">Kaspika.</span> <a href="https://kaspika.org/en/2026/04/17/mass-stranding-of-caspian-seals-2/" rel="noopener">«Mass stranding of Caspian seals»</a>, 17.04.2026.</li>
+          <li><span class="src">The Caspian Post.</span> <a href="https://caspianpost.com/kazakhstan/environmental-concerns-grow-after-new-seal-deaths-in-kazakhstan" rel="noopener">«Environmental Concerns Grow After New Seal Deaths in Kazakhstan»</a>, 2026.</li>
+          <li><span class="src">Inbusiness.kz.</span> <a href="https://inbusiness.kz/kz/last/kaspij-itbalygynda-kus-tumauy-anyktaldy" rel="noopener">«Каспий итбалығында құс тұмауы анықталды»</a>.</li>
+          <li><span class="src">24KZ.</span> <a href="https://24.kz/kz/zha-aly-tar/ekologiya/678187-kaspij-te-izinde-yryl-an-itbaly-tar-sany-300-ge-zhuy-tady" rel="noopener">«Каспий теңізінде қырылған итбалықтар саны 300-ге жуықтады»</a>.</li>
+          <li><span class="src">Orda.kz.</span> <a href="https://en.orda.kz/kazakhstan-authorizes-capture-of-caspian-seals-and-rare-fish-for-research-10307/" rel="noopener">«Kazakhstan Authorizes Capture of Caspian Seals and Rare Fish for Research»</a>, 2026.</li>
+          <li><span class="src">24KZ.</span> <a href="https://24.kz/kz/zha-aly-tar/ekologiya/766665-kaspij-tenizinde-gylymi-maksatta-60-tan-astam-itbalyk-aulanbak" rel="noopener">«Каспий теңізінде ғылыми мақсатта 60-тан астам итбалық ауланбақ»</a>, 2026.</li>
+          <li><span class="src">Interfax-Kazakhstan.</span> <a href="https://interfax.kz/en/news/78418" rel="noopener">«Kazakh government allocates $2.2 mln for Caspian Sea research, preservation»</a>, 24.02.2026.</li>
+          <li><span class="src">Lada.kz.</span> <a href="https://www.lada.kz/kazakhstan-news/156669-kazakhstan-vydelil-1-1-mlrd-tenge-na-izuchenie-kaspiia-chto-budut-otslezhivat-uchenye.html" rel="noopener">«Казахстан выделил 1,1 млрд тенге на изучение Каспия»</a>, 2026.</li>
+          <li><span class="src">Kazakhstan Today.</span> <a href="https://www.kt.kz/eng/society/world_bank_greenlights_caspian_sea_biodiversity_initiative_1377990157.html" rel="noopener">«World Bank greenlights Caspian Sea biodiversity initiative»</a>, 13.04.2026.</li>
+          <li><span class="src">Khaleej Times.</span> <a href="https://www.khaleejtimes.com/world/a-new-island-has-appeared-in-caspian-sea-but-scientists-say-its-bad-news" rel="noopener">«A new island has appeared in Caspian Sea, but scientists say it’s bad news»</a>, 10.10.2026.</li>
+          <li><span class="src">Lada.kz.</span> <a href="https://www.lada.kz/world-news/160422-kaspii-peredaiut-azerbaidzhanu-chto-izmenitsia-dlia-piati-stran.html" rel="noopener">«Каспий передают Азербайджану: что изменится для пяти стран»</a>, 2026.</li>
+          <li><span class="src">Orda.kz.</span> <a href="https://en.orda.kz/new-island-emerges-as-caspian-sea-levels-continue-to-fall-11202/" rel="noopener">«New Island Emerges as Caspian Sea Levels Continue to Fall»</a>, 2026.</li>
+          <li><span class="src">Tengrinews.</span> <a href="https://en.tengrinews.kz/science/scientists-warn-caspian-sea-may-eventually-split-into-two-270241" rel="noopener">«Scientists warn Caspian Sea may eventually split into two separate lakes»</a>.</li>
+          <li><span class="src">Ақорда / 24KZ.</span> <a href="https://24.kz/kz/zha-aly-tar/basty-zha-aly-tar/802324-k-tokaevtyn-kazakstan-halkyna-zoldauy" rel="noopener">«Жаңа тарихи кезеңдегі Қазақстанның өзекті міндеттері»</a> (Жолдау), 28.10.2026; akorda.kz.</li>
+          <li><span class="src">Tengrinews.</span> <a href="https://en.tengrinews.kz/politics_sub/caspian-sea-drying-tokayev-appeals-to-turkic-states-269718" rel="noopener">«Caspian Sea drying: Tokayev appeals to Turkic states»</a>, 2025.</li>
         </ol>
       </div>
     </div>
